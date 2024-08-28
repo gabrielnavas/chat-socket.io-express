@@ -26,8 +26,12 @@ io.on('connection', socket => {
   socket.on('chat', msg => {
     const you = `You say: ${msg}`;
     const other = `Other person with id ${socket.id} say: ${msg}`
-    socket.emit('chat', you);
-    socket.broadcast.emit('chat', other);
+    socket.emit('chat', {
+      message: you
+    });
+    socket.broadcast.emit('chat', {
+      message: other
+    });
   })
 
   socket.on('disconnect', () => {

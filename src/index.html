@@ -86,10 +86,10 @@
       }
     })
 
-    socket.on('chat', msg => {
+    socket.on('chat', data => {
       const ul = document.getElementById("messages")
       const li = document.createElement('li');
-      li.textContent = msg;
+      li.textContent = data.message;
       ul.appendChild(li);
       moveToLastMessage();
     })
