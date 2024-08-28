@@ -23,15 +23,16 @@ app.get('/', (req, res) => {
 io.on('connection', socket => {
   console.log('a user connected');
 
-  socket.on('chat', msg => {
+  socket.on('chat', (msg: string, callback: (msg: string) => void) => {
     const you = `You say: ${msg}`;
     const other = `Other person with id ${socket.id} say: ${msg}`
-    socket.emit('chat', {
+      socket.emit('chat', {
       message: you
     });
     socket.broadcast.emit('chat', {
       message: other
     });
+    callback('yahooooo!')
   })
 
   socket.on('disconnect', () => {
