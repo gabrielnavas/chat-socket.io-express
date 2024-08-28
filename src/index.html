@@ -36,7 +36,7 @@
       outline: none;
     }
 
-    #form > button {
+    #form>button {
       background: #333;
       border: none;
       padding: 0 1rem;
@@ -52,11 +52,11 @@
       padding: 0;
     }
 
-    #messages > li {
+    #messages>li {
       padding: 0.5rem 1rem;
     }
 
-    #messages > li:nth-child(odd) {
+    #messages>li:nth-child(odd) {
       background: #efefef;
     }
   </style>
@@ -65,11 +65,15 @@
 <body>
   <ul id="messages"></ul>
   <form id="form" action="">
-    <input 
-      id="input" 
-      autocomplete="off" />
-      <button>Send</button>
+    <input id="input" autocomplete="off" />
+    <button>Send</button>
   </form>
+
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+    const socket = io('ws://localhost:3001');
+  </script>
 </body>
 
 </html>
