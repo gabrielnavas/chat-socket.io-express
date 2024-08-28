@@ -24,7 +24,10 @@ io.on('connection', socket => {
   console.log('a user connected');
 
   socket.on('chat', msg => {
-    socket.emit('chat', msg);
+    const you = `You say: ${msg}`;
+    const other = `Other person with id ${socket.id} say: ${msg}`
+    socket.emit('chat', you);
+    socket.broadcast.emit('chat', other);
   })
 
   socket.on('disconnect', () => {
