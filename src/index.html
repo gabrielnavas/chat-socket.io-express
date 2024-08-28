@@ -91,7 +91,12 @@
       const li = document.createElement('li');
       li.textContent = msg;
       ul.appendChild(li);
+      moveToLastMessage();
     })
+
+    function moveToLastMessage() {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
   </script>
 </body>
 
