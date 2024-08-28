@@ -73,6 +73,25 @@
 
   <script>
     const socket = io('ws://localhost:3001');
+
+    const form = document.getElementById("form")
+    const input = document.getElementById("input")
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      if(input.value) {
+        socket.emit('chat', input.value)
+        input.value = '';
+      }
+    })
+
+    socket.on('chat', msg => {
+      const ul = document.getElementById("messages")
+      const li = document.createElement('li');
+      li.textContent = msg;
+      ul.appendChild(li);
+    })
   </script>
 </body>
 
